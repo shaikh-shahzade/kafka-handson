@@ -19,10 +19,13 @@ public class Main {
         prop.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         prop.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
 
+        prop.setProperty(ProducerConfig.ACKS_CONFIG,"all");
+        
+
         KafkaProducer<String,String> kafkaProducer = new KafkaProducer<>(prop);
-        String topic = "wiki-recent";
+        String topic = "wiki_recent";
         EventHandler eventHandler = new WikiEventHandler(kafkaProducer,topic);
-        String url = "";
+        String url = "https://stream.wikimedia.org/v2/stream/recentchange";
         EventSource.Builder eventBuilder = new EventSource.Builder(eventHandler, URI.create(url));
 
         EventSource eventSource = eventBuilder.build();
