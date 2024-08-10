@@ -20,7 +20,7 @@ public class Main {
         prop.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
 
         prop.setProperty(ProducerConfig.ACKS_CONFIG,"all");
-        
+
 
         KafkaProducer<String,String> kafkaProducer = new KafkaProducer<>(prop);
         String topic = "wiki_recent";

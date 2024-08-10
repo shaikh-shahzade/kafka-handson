@@ -1,4 +1,5 @@
 rootProject.name = 'kafka-practice'
 include 'kafka-basics'
 include 'project-wiki'
+include 'consumer-app'
 
